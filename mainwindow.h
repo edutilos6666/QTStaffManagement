@@ -14,6 +14,13 @@
 #include "employeedetailswindow.h"
 #include <QItemSelectionModel>
 #include "employeeutils.h"
+#include <QLabel>
+//#include <QtCharts/QChartView>
+//#include <QtCharts/QPieSeries>
+//#include <QtCharts/QPieSlice>
+//#include <QtCharts/QChart>
+#include <QVBoxLayout>
+#include <QtCharts>
 using namespace std;
 
 namespace Ui {
@@ -40,6 +47,7 @@ public slots:
      void onUpdateEmployee();
      void onRemoveEmployee();
      void onEmployeeDetails();
+     void onPieCharts();
     // void fillEmployeeModel();
 private:
     Ui::MainWindow *ui;

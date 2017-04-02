@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>619</width>
-    <height>443</height>
+    <height>488</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,6 +106,23 @@ font-size:14px;</string>
     </property>
     <property name="text">
      <string>Details</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPieCharts">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>370</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(0, 170, 0); 
+font-size:14px;</string>
+    </property>
+    <property name="text">
+     <string>Show PieCharts</string>
     </property>
    </widget>
   </widget>

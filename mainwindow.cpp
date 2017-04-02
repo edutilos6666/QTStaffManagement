@@ -62,6 +62,9 @@ void MainWindow::registerEvents()
      dao->update(id, emp);
       utils.fillEmployeeModel(employeeModel, dao->findAll());
   });
+
+
+  QObject::connect(ui->btnPieCharts, SIGNAL(clicked(bool)), this, SLOT(onPieCharts()));
 }
 
 long MainWindow::getSelectedEmployeeId()
@@ -110,3 +113,53 @@ void MainWindow::onEmployeeDetails()
     EmployeeDetailsWindow *detailsWindow = new EmployeeDetailsWindow(this, dao, id);
     detailsWindow->show();
 }
+
+void MainWindow::onPieCharts()
+{
+   QMainWindow *window = new QMainWindow();
+   window->resize(500, 500);
+   window->setWindowTitle("Pie Charts");
+   window->setWindowModality(Qt::WindowModal);
+   QVBoxLayout *layout = new QVBoxLayout();
+   QWidget *widget = new QWidget(window);
+   window->setCentralWidget(widget);
+   widget->setLayout(layout);
+   auto emps = dao->findAll();
+   //age
+   QLabel *lblPieAge  = new QLabel("Pie Chart for Employees Age");
+   QPieSeries *seriesAge = new QPieSeries();
+   for(auto &emp: emps) {
+       QString name = emp->name;
+       int age = emp->age;
+        seriesAge->append(name, age);
+   }
+
+
+   QChart *chartAge = new QChart();
+   chartAge->setAnimationOptions(QChart::AllAnimations);
+   chartAge->addSeries(seriesAge);
+   chartAge->setTitle("Employees Age");
+   QChartView *viewChartAge = new QChartView(chartAge);
+   layout->addWidget(lblPieAge);
+   layout->addWidget(viewChartAge);
+
+
+   //wage
+   QLabel *lblSalary = new QLabel("Pie Chart for Employees Salary");
+   QPieSeries *seriesSalary = new QPieSeries();
+   for(auto &emp: emps) {
+       QString name = emp->name;
+       double salary = emp->salary;
+       seriesSalary->append(name, salary);
+   }
+
+   QChart *chartSalary = new QChart();
+   chartSalary->setAnimationOptions(QChart::AllAnimations);
+   chartSalary->addSeries(seriesSalary);
+   chartSalary->setTitle("Employees Wage");
+   QChartView *viewChartSalary = new QChartView(chartSalary);
+   layout->addWidget(lblSalary);
+   layout->addWidget(viewChartSalary);
+   window->show();
+}
+

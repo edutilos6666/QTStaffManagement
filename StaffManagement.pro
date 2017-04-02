@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     employeeaddwindow.cpp \
     employeeupdatewindow.cpp \
     employeedetailswindow.cpp \
-    employeeutils.cpp
+    employeeutils.cpp \
+    employeedaomysql.cpp
 
 HEADERS  += mainwindow.h \
     employee.h \
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.h \
     employeeaddwindow.h \
     employeeupdatewindow.h \
     employeedetailswindow.h \
-    employeeutils.h
+    employeeutils.h \
+    employeedaomysql.h
 
 FORMS    += mainwindow.ui \
     employeeaddwindow.ui \
